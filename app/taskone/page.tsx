@@ -26,7 +26,7 @@ export default function TaskOne(){
 
             <div className="space-y-2 px-2">
                 {habits.map((habit, index)=>(
-                    <HabitElement key={index} name={habit.name} checked={habit.checked}/>
+                    <HabitElement key={index} name={habit.name} checked={habit.checked} index={index}/>
                 ))}
             </div>
 
