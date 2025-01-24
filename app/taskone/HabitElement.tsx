@@ -1,21 +1,27 @@
 import { MoreVertical } from "lucide-react";
-interface HabitProps{
-    name: string,
-    checked: boolean,
+import { useTaskStore } from "./useTaskStore";
+interface HabitProps {
+    name: string;
+    checked: boolean;
+    index: number;
 }
-
-export default function HabitElement({name, checked=false}: HabitProps) {
-    return(
-        <div className="flex justify-between bg-gray-200 p-4 items-center rounded-lg">
-            <span>{name}</span>
+  
+export default function HabitElement({ name, checked, index }: HabitProps) {
+    return (
+        <div
+            className={`flex justify-between ${checked ? "bg-gray-200" : "bg-gray-100"} p-4 items-center rounded-lg`}
+        >
+            <span className={checked ? "text-green-500" : ""}>{name}</span>
             <div className="flex items-center gap-2">
-                <input 
-                    type="checkbox"
-                    className="form-checkbox size-5 text-emerald-400 rounded-md border-2 border-emerald-400 focus:ring-emerald-400"
-                    defaultChecked={checked}
-                />
-                <MoreVertical className="size-4" />
+            <input
+                type="checkbox"
+                className="form-checkbox size-6 text-emerald-400 rounded-md border-2 border-gray-400 focus:ring-0 cursor-pointer"
+                checked={checked}
+                onChange={() => useTaskStore.getState().toggleHabit(index)}
+            />
+            <MoreVertical className="size-4 cursor-pointer" />
             </div>
         </div>
     );
 }
+  
