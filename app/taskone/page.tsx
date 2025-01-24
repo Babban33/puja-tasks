@@ -1,8 +1,8 @@
 export default function TaskOne(){
     return(
-        <div className="max-w-md mx-auto p-4 min-h-screen bg-gray-50">
+        <div className="max-w-md mx-auto p-4 min-h-screen bg-gray-50 text-gray-900">
             <header className="my-6">
-                <div className="text-sm text-gray-900">Sun, 1 March 2022</div>
+                <div className="text-sm ">Sun, 1 March 2022</div>
                 <h1 className="text-2xl font-semibold text-gray-900">
                 Hello, <span className="text-orange-500">Susy!</span>
                 </h1>
@@ -19,6 +19,11 @@ export default function TaskOne(){
                         completed today!
                     </div>
                 </div>
+            </div>
+
+            <div className="mb-4 px-4 flex justify-between items-center">
+                <h2 className="text-lg font-semibold">Today Habit</h2>
+                <button className="text-orange-500 text-sm hover:text-orange-600 transition-colors">See all</button>
             </div>
         </div>
     )
