@@ -51,12 +51,14 @@ export default function TaskOne(){
             {isPopUpOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
                     <div className="bg-white w-80 rounded-lg p-6 shadow-lg relative">
-                        <h2 className="text-lg font-semibold mb-4">Create Habit</h2>
-                        <button onClick={()=>setPopUpOpen(false)}>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-                            </svg>
-                        </button>
+                        <div className="flex justify-between items-center mb-4">
+                            <h2 className="text-lg font-semibold">Create Habit</h2>
+                            <button onClick={()=>setPopUpOpen(false)}>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}
