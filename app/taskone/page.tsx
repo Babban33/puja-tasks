@@ -1,4 +1,4 @@
-import { MoreVertical } from "lucide-react";
+import { MoreVertical, Plus } from "lucide-react";
 import TopComponent from "./TopComponent";
 
 export default function TaskOne(){
@@ -25,13 +25,23 @@ export default function TaskOne(){
                         <MoreVertical className="size-4"/>
                     </div>
                 </div>
-                <div className="flex justify-between bg-gray-200 p-4 items-center rounded-lg">
+                <div className="flex justify-between bg-gray-100 p-4 items-center rounded-lg">
                     <span>Journaling</span>
                     <div className="flex items-center gap-2">
                         <input type="checkbox" className="form-checkbox size-5 text-emerald-400 rounded-md border-2 border-emerald-400 focus:ring-emerald-400"/>
                         <MoreVertical className="size-4"/>
                     </div>
                 </div>
+            </div>
+
+
+            <div className="mt-auto flex justify-end">
+                <button
+                    className="size-14 bg-emerald-400 rounded-full flex items-center justify-center shadow-lg hover:bg-emerald-500 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+                    aria-label="Add new habit"
+                >
+                    <Plus className="size-9 text-white" />
+                </button>
             </div>
         </div>
     )
