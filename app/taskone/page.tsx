@@ -3,7 +3,7 @@ import TopComponent from "./TopComponent";
 
 export default function TaskOne(){
     return(
-        <div className="max-w-md mx-auto p-4 min-h-screen bg-gray-50 text-gray-900">
+        <div className="max-w-md mx-auto p-4 min-h-screen bg-gray-50 text-gray-900 flex flex-col">
             <TopComponent/>
             <div className="mb-4 px-4 flex justify-between items-center">
                 <h2 className="text-lg font-semibold">Today Habit</h2>
