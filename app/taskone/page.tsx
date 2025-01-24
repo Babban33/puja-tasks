@@ -1,7 +1,10 @@
+"use client"
 import { MoreVertical, Plus } from "lucide-react";
 import TopComponent from "./TopComponent";
+import { useState } from "react";
 
 export default function TaskOne(){
+    const[ isPopUpOpen, setPopUpOpen] = useState(false);
     return(
         <div className="max-w-md mx-auto p-4 min-h-screen bg-gray-50 text-gray-900 flex flex-col">
             <TopComponent/>
@@ -39,10 +42,24 @@ export default function TaskOne(){
                 <button
                     className="size-14 bg-emerald-400 rounded-full flex items-center justify-center shadow-lg hover:bg-emerald-500 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
                     aria-label="Add new habit"
+                    onClick={()=>setPopUpOpen(true)}
                 >
                     <Plus className="size-9 text-white" />
                 </button>
             </div>
+
+            {isPopUpOpen && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+                    <div className="bg-white w-80 rounded-lg p-6 shadow-lg relative">
+                        <h2 className="text-lg font-semibold mb-4">Create Habit</h2>
+                        <button onClick={()=>setPopUpOpen(false)}>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }
