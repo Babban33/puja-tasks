@@ -1,3 +1,5 @@
+import { MoreVertical } from "lucide-react";
+
 export default function TaskOne(){
     return(
         <div className="max-w-md mx-auto p-4 min-h-screen bg-gray-50 text-gray-900">
@@ -28,7 +30,10 @@ export default function TaskOne(){
 
             <div className="flex justify-between bg-gray-200 p-4 items-center rounded-lg">
                 <span>Meditating</span>
-                <input type="checkbox"/>
+                <div className="flex items-center gap-2">
+                    <input type="checkbox"/>
+                    <MoreVertical className="size-5"/>
+                </div>
             </div>
         </div>
     )
