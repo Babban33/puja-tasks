@@ -35,6 +35,13 @@ export default function TaskOne(){
                     <MoreVertical className="size-5"/>
                 </div>
             </div>
+            <div className="flex justify-between bg-gray-200 p-4 items-center rounded-lg">
+                <span>Meditating</span>
+                <div className="flex items-center gap-2">
+                    <input type="checkbox" className="form-checkbox size-5 text-emerald-400 rounded-md border-2 border-emerald-400 focus:ring-emerald-400"/>
+                    <MoreVertical className="size-5"/>
+                </div>
+            </div>
         </div>
     )
 }
