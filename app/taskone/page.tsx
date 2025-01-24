@@ -25,6 +25,11 @@ export default function TaskOne(){
                 <h2 className="text-lg font-semibold">Today Habit</h2>
                 <button className="text-orange-500 text-sm hover:text-orange-600 transition-colors">See all</button>
             </div>
+
+            <div className="flex justify-between bg-gray-200 p-4 items-center rounded-lg">
+                <span>Meditating</span>
+                <input type="checkbox"/>
+            </div>
         </div>
     )
 }
