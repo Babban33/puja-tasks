@@ -2,6 +2,7 @@
 import { MoreVertical, Plus } from "lucide-react";
 import TopComponent from "./TopComponent";
 import { useState } from "react";
+import HabitElement from "./HabitElement";
 
 export default function TaskOne(){
     const[ isPopUpOpen, setPopUpOpen] = useState(false);
@@ -14,13 +15,7 @@ export default function TaskOne(){
             </div>
 
             <div className="space-y-2 px-2">
-                <div className="flex justify-between bg-gray-200 p-4 items-center rounded-lg">
-                    <span>Meditating</span>
-                    <div className="flex items-center gap-2">
-                        <input type="checkbox" className="form-checkbox size-5 text-emerald-400 rounded-md border-2 border-emerald-400 focus:ring-emerald-400"/>
-                        <MoreVertical className="size-4"/>
-                    </div>
-                </div>
+                <HabitElement name="Meditating" checked={true}/>
                 <div className="flex justify-between bg-gray-200 p-4 items-center rounded-lg">
                     <span>Read Philosophy</span>
                     <div className="flex items-center gap-2">
@@ -86,3 +81,5 @@ export default function TaskOne(){
         </div>
     )
 }
+
+
