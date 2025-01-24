@@ -1,11 +1,11 @@
 "use client"
 import { Plus } from "lucide-react";
 import TopComponent from "./TopComponent";
-import { useState } from "react";
+import { useTaskStore } from "./useTaskStore";
 import HabitElement from "./HabitElement";
 
 export default function TaskOne(){
-    const[ isPopUpOpen, setPopUpOpen] = useState(false);
+    const {isPopUpOpen, togglePopUp} = useTaskStore();
     return(
         <div className="max-w-md mx-auto p-4 min-h-screen bg-gray-50 text-gray-900 flex flex-col">
             <TopComponent/>
@@ -25,7 +25,7 @@ export default function TaskOne(){
                 <button
                     className="size-14 bg-emerald-400 rounded-full flex items-center justify-center shadow-lg hover:bg-emerald-500 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
                     aria-label="Add new habit"
-                    onClick={()=>setPopUpOpen(true)}
+                    onClick={togglePopUp}
                 >
                     <Plus className="size-9 text-white" />
                 </button>
@@ -36,7 +36,7 @@ export default function TaskOne(){
                     <div className="bg-white w-80 rounded-lg p-6 shadow-lg relative">
                         <div className="flex justify-between items-center mb-4">
                             <h2 className="text-lg font-semibold">Create Habit</h2>
-                            <button onClick={()=>setPopUpOpen(false)}>
+                            <button onClick={togglePopUp}>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                                 </svg>
