@@ -5,7 +5,17 @@ import { useTaskStore } from "./useTaskStore";
 import HabitElement from "./HabitElement";
 
 export default function TaskOne(){
-    const {isPopUpOpen, togglePopUp} = useTaskStore();
+    const {habits, isPopUpOpen, togglePopUp, addHabit} = useTaskStore();
+    const handleFormSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        const inputElement = document.getElementById("habit") as HTMLInputElement;
+        const newHabitName = inputElement?.value.trim();
+        if (newHabitName) {
+            addHabit(newHabitName);
+            inputElement.value = "";
+            togglePopUp();
+        }
+    };
     return(
         <div className="max-w-md mx-auto p-4 min-h-screen bg-gray-50 text-gray-900 flex flex-col">
             <TopComponent/>
@@ -15,9 +25,9 @@ export default function TaskOne(){
             </div>
 
             <div className="space-y-2 px-2">
-                <HabitElement name="Meditating" checked={true}/>
-                <HabitElement name="Reading Philosophy" checked={true}/>
-                <HabitElement name="Journaling" checked={false}/>
+                {habits.map((habit, index)=>(
+                    <HabitElement key={index} name={habit.name} checked={habit.checked}/>
+                ))}
             </div>
 
 
@@ -43,7 +53,7 @@ export default function TaskOne(){
                             </button>
                         </div>
 
-                        <form className="space-y-4">
+                        <form className="space-y-4" onSubmit={handleFormSubmit}>
                             <div>
                                 <label htmlFor="habit" className="block text-gray-700">
                                 Habit Name
