@@ -1,4 +1,9 @@
-export default function TopComponent(){
+interface ElementCountProps{
+    length: number,
+    tasksDone: number
+}
+
+export default function TopComponent({length, tasksDone}: ElementCountProps){
     return(
         <>
             <header className="my-6">
@@ -14,7 +19,7 @@ export default function TopComponent(){
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
                     <div className="text-xl font-medium">
-                        2 of 3 habits
+                        {tasksDone} of {length} habits
                         <br />
                         completed today!
                     </div>
