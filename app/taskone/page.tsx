@@ -9,10 +9,10 @@ export default async function HabitPage() {
             checked: "desc",
         }
     });
-    
+    const tasksDoneCount = habits.filter((habit) => habit.checked).length;
     return(
         <div className="max-w-md mx-auto p-4 min-h-screen bg-gray-50 text-gray-900 flex flex-col">
-            <TopComponent/>
+            <TopComponent length={habits.length} tasksDone={tasksDoneCount}/>
             <div className="mb-4 px-4 flex justify-between items-center">
                 <h2 className="text-lg font-semibold">Today Habit</h2>
                 <button className="text-orange-500 text-sm hover:text-orange-600 transition-colors">See all</button>
