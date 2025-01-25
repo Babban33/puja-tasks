@@ -4,7 +4,11 @@ import HabitEle from "./HabitElement";
 import FormWrapper from "./FormWrapper";
 
 export default async function HabitPage() {
-    const habits = await prisma.habit.findMany();
+    const habits = await prisma.habit.findMany({
+        orderBy:{
+            checked: "desc",
+        }
+    });
     
     return(
         <div className="max-w-md mx-auto p-4 min-h-screen bg-gray-50 text-gray-900 flex flex-col">
