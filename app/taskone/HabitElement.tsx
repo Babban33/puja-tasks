@@ -1,7 +1,8 @@
 "use client";
-import { MoreVertical } from "lucide-react";
+import { MoreVertical, Trash2 } from "lucide-react";
 import { toggleHabit, deleteHabit } from "../actions";
-import { useState } from "react";
+import { Popover } from "@/components/ui/popover";
+import { PopoverContent, PopoverTrigger, PopoverArrow } from "@radix-ui/react-popover";
 
 interface HabitProps{
     id: string,
@@ -13,11 +14,6 @@ export default function HabitElement({id, name, checked}: HabitProps){
     const handleToggle = async () => {
         await toggleHabit(id, checked);
     };
-    const handleDelete = async () => {
-        await deleteHabit(id);
-        setShowOptions(false);
-    }
-    const [showOptions, setShowOptions] = useState(false);
     return(
         <div className={`flex justify-between ${checked ? "bg-gray-200" : "bg-gray-100"} p-4 items-center rounded-lg`}>
             <span className={checked ? "text-green-500" : ""}>{name}</span>
@@ -28,17 +24,21 @@ export default function HabitElement({id, name, checked}: HabitProps){
                     checked={checked}
                     onChange={handleToggle}
                 />
-                <MoreVertical className="size-4 cursor-pointer" onClick={() => setShowOptions(!showOptions)} />
-                {showOptions && (
-                    <div className="relative right-0 mt-2 bg-white border rounded-lg shadow-lg z-10">
+                <Popover>
+                    <PopoverTrigger>
+                        <MoreVertical className="size-4 cursor-pointer" />
+                    </PopoverTrigger>
+                    <PopoverContent className="relative right-1 bg-background mt-2 text-red-500 hover:bg-red-100 border rounded-lg shadow-lg z-10 p-4">
+                        <PopoverArrow />
                         <button
-                            className="px-4 py-2 text-red-500 hover:bg-red-100 w-full text-left"
-                            onClick={() => handleDelete()}
+                            className="w-full text-left flex gap-2 items-center"
+                            onClick={()=>deleteHabit(id)}
                         >
+                            <Trash2 className="size-4"/>
                             Delete
                         </button>
-                    </div>
-                )}
+                    </PopoverContent>
+                </Popover>
             </div>
         </div>
     )
