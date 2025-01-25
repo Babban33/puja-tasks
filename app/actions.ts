@@ -12,3 +12,11 @@ export async function addHabit(formData: FormData) {
     });
     revalidatePath("/taskone/correct")
 }
+
+export async function toggleHabit(id: string, checked: boolean) {
+    await prisma.habit.update({
+      where: { id },
+      data: { checked: !checked },
+    });
+    revalidatePath("/taskone");
+}
