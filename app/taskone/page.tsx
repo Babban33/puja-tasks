@@ -16,7 +16,7 @@ export default async function HabitPage() {
 
             <div className="space-y-3 px-2">
                 {habits.map((habit) =>(
-                    <HabitEle key={habit.id} name={habit.name} checked={habit.checked} />
+                    <HabitEle key={habit.id} id={habit.id} name={habit.name} checked={habit.checked} />
                 ))}
             </div>
             <FormWrapper/>
