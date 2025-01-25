@@ -20,3 +20,10 @@ export async function toggleHabit(id: string, checked: boolean) {
     });
     revalidatePath("/taskone");
 }
+
+export async function deleteHabit(id:string) {
+    await prisma.habit.delete({
+        where:{id},
+    });
+    revalidatePath("/taskone");
+}
