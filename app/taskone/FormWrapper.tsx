@@ -3,12 +3,21 @@
 import { useHabitStore } from "./useHabitStore";
 import { Plus } from "lucide-react";
 import { addHabit } from "@/app/actions";
+import { useState } from "react";
 
 export default function FormWrapper() {
     const { isPopUpOpen, setState } = useHabitStore();
+    const [habitName, setHabitName] = useState<string>('');
 
     const togglePopUp = () => setState((state) => ({ isPopUpOpen: !state.isPopUpOpen }));
-
+  
+    const handleSubmit = async (event: React.FormEvent) => {
+      event.preventDefault();
+      const formData = new FormData();
+      formData.append("habit", habitName);
+      await addHabit(formData);
+      togglePopUp();
+    };
     return (
         <>
             <div className="mt-auto flex justify-end">
@@ -32,7 +41,7 @@ export default function FormWrapper() {
                             </svg>
                         </button>
                     </div>
-                    <form className="space-y-4" action={addHabit}>
+                    <form className="space-y-4" onSubmit={handleSubmit}>
                         <div>
                             <label htmlFor="habit" className="block text-gray-700">
                             Habit Name
@@ -44,6 +53,7 @@ export default function FormWrapper() {
                                 className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"
                                 placeholder=""
                                 required
+                                onChange={(e) => setHabitName(e.target.value)}
                             />
                         </div>
                         <button
